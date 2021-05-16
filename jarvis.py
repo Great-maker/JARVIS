@@ -28,7 +28,7 @@ import subprocess
  
 
 try:
-    client = wolframalpha.Client("PTR7JE-P5A3HLXHL3")
+    client = wolframalpha.Client("<YOUR API KEY>")
 except Exception:
     speak("Please connect to the internet Sir!")
 
@@ -74,12 +74,14 @@ def wishme():
     time()
     date()
     speak("At your service Sir!")
+    
+  #PLease check how to use PYAUTOGUI if you dont know from this url - https://youtu.be/V3IOfvGmqxs
 
 def sign_in(meetingid, pswd):
     subprocess.call(["C:/Users/Admin/AppData/Roaming/Zoom/bin/Zoom.exe"])
     sleep(5)
     # Clicks the join button
-    join_btn =pyautogui.locateCenterOnScreen('join_btn.png')
+    join_btn =pyautogui.locateCenterOnScreen('join_btn.png') 
     pyautogui.moveTo(join_btn)
     pyautogui.click()
     sleep(3)
@@ -107,19 +109,14 @@ def greeting():
     hour = datetime.datetime.now().hour
     
     if hour >= 6 and hour <12:
-        speak("Good Morning Sir")
-        # speak("Sir today you have a meeting regarding biology at 8am. I am connecting you  to the meeting so you dont miss it")
-        # sign_in('3393778476','biolive')
+        speak("Good Morning Sir"
     elif hour >= 12 and hour <18:
         speak("Good Afternoon Sir")
     elif hour >= 18 and hour <24:
         speak("Good Evening Sir")
     else:
         speak("Good Night Sir!")
-    # if hour >=17 and hour <24:
-        # speak("Sir today you have a meeting regarding computer(JAVA) at 5pm. I am connecting you  to the meeting so you dont miss it")
-        # sign_in('848 399 2309', '607525' )
-        # wb.open('https://us04web.zoom.us/j/8483992309?pwd=eVRSdlNiM0o5VHloTFJTZm5tdXgrUT09')
+    
 
 # while True:
 #     voice = int(input('Press 1 for Male voice\nPress 2 for Female voice'))
@@ -152,8 +149,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('enterpriseone23@gmail.com', 'JQUERY123')
-    server.sendmail('enterpriseone23@gmail.com', to, content)
+    server.login('mailID', 'passwd')
+    server.sendmail('mailID', to, content)
     server.close()
 
 def sendWhatsappMsg(phone_no, message):
@@ -169,7 +166,7 @@ def searchgoogle():
     wb.open('https://www.google.com/search?q='+search)
 
 def news():
-    newsapi = NewsApiClient(api_key='704a85176b6842169174e0ebe8d3cf9f')
+    newsapi = NewsApiClient(api_key='<API KEY>')
     speak("What Topic should I search for Sir?")
     topic = takeCommandMic()
     data = newsapi.get_top_headlines(q=topic,
@@ -274,10 +271,10 @@ if __name__ == "__main__":
 
         elif 'message' in query:
             user_name = {
-                'Anish' : '+91 6291797077',
-                'father' : '+91 8240661600',
-                'mother' : '+91 8777677830',
-                'friend' : '+91 9875452516'
+                'FRIEND' : '+91 1234567890',
+                'father' : '+91 1234567890',
+                'mother' : '+91 1234567890',
+                
                 }
             try:
                 speak("Whom should I message")
@@ -306,7 +303,7 @@ if __name__ == "__main__":
               
             # Use the same API key  
             # that we have generated earlier 
-            client = wolframalpha.Client("PTR7JE-P5A3HLXHL3") 
+            client = wolframalpha.Client("api key") 
             res = client.query(query) 
               
             try: 
@@ -363,18 +360,7 @@ if __name__ == "__main__":
         elif 'documents' in query:
             codepath = 'path-of-application'
             os.startfile(codepath)
-        
-        elif "that's enough" in query:
-            speak('Sorry Sir! I will definitly try to improve')
-
-        elif 'good for nothing' in query:
-            speak("I understand Sir!")
-        
-        
-
-        elif 'destroy you dumb machine' in query:
-            speak('No sir please dont do that. But i must mention, that my workings are based on you. NoOffense, Ha ha ha')
-
+     
         elif 'joke' in query:
                 speak(pyjokes.get_joke())
                 
@@ -399,8 +385,7 @@ if __name__ == "__main__":
         elif 'flip' in query:
             flip()
         
-        elif 'speak that' in query:
-            speak('Yes! Sir i am trying to learn your language.')
+        
         
         elif 'keep it up' in query:
             speak("Nis  choey sir")
@@ -427,10 +412,10 @@ if __name__ == "__main__":
             os.startfile(codepath)
 
         elif 'zoom' in query:
-            sign_in('4039853820', 'arpan@67')
+            sign_in('meeting id', 'password')
 
         elif 'play music' in query:
-            codepath='C://Users//Admin//Downloads//Dariya.mpeg'
+            codepath='<ENTER MUSIC PATH>'
             os.startfile(codepath)
             
         elif 'geography' in query:
